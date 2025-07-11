@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: La Importancia de los Modelos de Red</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#F0F8FF]">
+
+    <header class="bg-[#004E89] text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">La Arquitectura Invisible de la Conexión</h1>
+            <p class="mt-4 text-lg md:text-xl text-[#ADE8F4]">Explorando la Importancia de los Modelos de Red OSI y TCP/IP</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <section class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-[#004E89] mb-4">¿Qué son los Modelos de Red?</h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                Los modelos de red como OSI y TCP/IP son conjuntos de reglas y estándares que definen cómo se comunican los dispositivos en una red. Funcionan como un lenguaje universal, dividiendo el complejo proceso de comunicación en capas más pequeñas y manejables, lo que garantiza que diferentes tecnologías puedan operar juntas sin problemas.
+            </p>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-2xl font-bold text-center text-[#0077B6] mb-4">El Modelo OSI: El Marco Conceptual</h3>
+                <p class="text-gray-600 mb-6 text-center">El modelo OSI (Open Systems Interconnection) es un marco de referencia de 7 capas que estandariza las funciones de un sistema de telecomunicaciones. Aunque no se implementa directamente en internet, es fundamental para la enseñanza y la comprensión de las redes.</p>
+                <div class="space-y-2 text-white font-semibold">
+                    <div class="bg-[#48CAE4] p-3 rounded-lg text-center shadow">7. Capa de Aplicación</div>
+                    <div class="bg-[#48CAE4] p-3 rounded-lg text-center shadow">6. Capa de Presentación</div>
+                    <div class="bg-[#48CAE4] p-3 rounded-lg text-center shadow">5. Capa de Sesión</div>
+                    <div class="bg-[#0077B6] p-3 rounded-lg text-center shadow">4. Capa de Transporte</div>
+                    <div class="bg-[#0077B6] p-3 rounded-lg text-center shadow">3. Capa de Red</div>
+                    <div class="bg-[#004E89] p-3 rounded-lg text-center shadow">2. Capa de Enlace de Datos</div>
+                    <div class="bg-[#004E89] p-3 rounded-lg text-center shadow">1. Capa Física</div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-2xl font-bold text-center text-[#0077B6] mb-4">El Modelo TCP/IP: El Estándar de Internet</h3>
+                 <p class="text-gray-600 mb-6 text-center">El modelo TCP/IP es el conjunto de protocolos que hace funcionar a internet. Es un modelo más práctico de 4 capas que corresponde directamente con los protocolos utilizados en la comunicación de datos real a través de la web.</p>
+                <div class="space-y-2 text-white font-semibold">
+                     <div class="bg-[#48CAE4] p-3 rounded-lg text-center shadow">4. Capa de Aplicación</div>
+                     <div class="bg-[#0077B6] p-3 rounded-lg text-center shadow">3. Capa de Transporte</div>
+                     <div class="bg-[#0077B6] p-3 rounded-lg text-center shadow">2. Capa de Internet</div>
+                     <div id="tcpip-layer-1" class="bg-[#004E89] p-3 rounded-lg text-center shadow"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-16">
+            <h2 class="text-3xl font-bold text-[#004E89] mb-4 text-center">Comparando los Modelos</h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto text-center mb-8">
+                Aunque OSI es más detallado y sirve como un excelente modelo educativo, TCP/IP es el modelo práctico que impulsa el internet de hoy. La diferencia más notable es el número de capas; OSI tiene siete, mientras que TCP/IP condensa estas funciones en cuatro.
+            </p>
+            <div class="chart-container">
+                <canvas id="layerComparisonChart"></canvas>
+            </div>
+        </section>
+        
+        <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-16">
+            <h2 class="text-3xl font-bold text-[#004E89] mb-4 text-center">Popularidad de Protocolos Clave</h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto text-center mb-8">
+                Dentro del modelo TCP/IP, diferentes protocolos operan en cada capa para gestionar el tráfico de datos. Este gráfico muestra el uso relativo ilustrativo de los protocolos más comunes en el tráfico web, destacando el dominio de tecnologías como IP para el enrutamiento y TCP para una transmisión fiable.
+            </p>
+            <div class="chart-container">
+                <canvas id="protocolUsageChart"></canvas>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[#004E89] mb-8 text-center">¿Por Qué Son Fundamentales?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <span class="text-5xl mb-4 block">🤝</span>
+                    <h3 class="text-xl font-bold text-[#0077B6]">Interoperabilidad</h3>
+                    <p class="text-gray-600 mt-2">Aseguran que dispositivos de diferentes fabricantes puedan comunicarse entre sí sin problemas.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <span class="text-5xl mb-4 block">🏗️</span>
+                    <h3 class="text-xl font-bold text-[#0077B6]">Diseño Estructurado</h3>
+                    <p class="text-gray-600 mt-2">Facilitan el diseño y la construcción de redes complejas al dividir las tareas en capas manejables.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <span class="text-5xl mb-4 block">🔧</span>
+                    <h3 class="text-xl font-bold text-[#0077B6]">Solución de Problemas</h3>
+                    <p class="text-gray-600 mt-2">Permiten a los administradores de red aislar problemas en capas específicas, acelerando el diagnóstico.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <span class="text-5xl mb-4 block">🌐</span>
+                    <h3 class="text-xl font-bold text-[#0077B6]">Estandarización Global</h3>
+                    <p class="text-gray-600 mt-2">Crean un estándar universal que impulsa la innovación y el crecimiento de internet en todo el mundo.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-[#004E89] text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>Los modelos de red son los héroes anónimos de nuestra era digital, haciendo posible cada clic, cada mensaje y cada conexión.</p>
+        </div>
+    </footer>
+
+    <script>
+        function wrapLabel(label) {
+            const maxLength = 16;
+            if (typeof label !== 'string' || label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = currentLine ? currentLine + ' ' + word : word;
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine);
+            }
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const tcpIpLayer1Label = 'Capa de Acceso a la Red';
+            const wrappedTcpIpLabel = wrapLabel(tcpIpLayer1Label);
+            const labelContainer = document.getElementById('tcpip-layer-1');
+            if(Array.isArray(wrappedTcpIpLabel)) {
+                labelContainer.innerHTML = wrappedTcpIpLabel.join('<br>');
+            } else {
+                labelContainer.textContent = wrappedTcpIpLabel;
+            }
+
+            const layerComparisonCtx = document.getElementById('layerComparisonChart').getContext('2d');
+            new Chart(layerComparisonCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Modelo OSI', 'Modelo TCP/IP'],
+                    datasets: [{
+                        label: 'Número de Capas',
+                        data: [7, 4],
+                        backgroundColor: ['#0077B6', '#48CAE4'],
+                        borderColor: ['#004E89', '#0077B6'],
+                        borderWidth: 2,
+                        borderRadius: 5,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Comparación del Número de Capas',
+                            font: {
+                                size: 16
+                            },
+                            color: '#333'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: tooltipTitleCallback
+                            }
+                        }
+                    }
+                }
+            });
+
+            const protocolUsageCtx = document.getElementById('protocolUsageChart').getContext('2d');
+            new Chart(protocolUsageCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['HTTP/S', 'TCP', 'IP', 'Ethernet', 'UDP'],
+                    datasets: [{
+                        label: 'Uso Relativo en Tráfico de Internet (%)',
+                        data: [95, 90, 100, 98, 60],
+                        backgroundColor: [
+                            '#004E89',
+                            '#0077B6',
+                            '#48CAE4',
+                            '#ADE8F4',
+                            '#90E0EF',
+                        ],
+                        borderColor: '#004E89',
+                        borderWidth: 1,
+                        borderRadius: 5,
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Uso Relativo Ilustrativo de Protocolos',
+                            font: {
+                                size: 16
+                            },
+                            color: '#333'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: tooltipTitleCallback
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                callback: function(value) {
+                                    return value + "%"
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
